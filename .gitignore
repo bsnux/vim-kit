@@ -1,0 +1,7 @@
+*.pyc
+.gitconfig
+*.swp
+*~
+Session.vim
+tags
+TAGS
