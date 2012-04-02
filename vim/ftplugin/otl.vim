@@ -54,6 +54,8 @@ call s:OtlDefaultGlobalVar("otl_map_tabs", 0)
 " set g:otl_text_view to 1 if you want to start in text view
 call s:OtlDefaultGlobalVar("otl_text_view", 0)
 
+call s:OtlDefaultGlobalVar("otl_use_viki", 0)
+
 if exists('*VikiMinorMode')
   " set g:otl_use_viki to 0 if Viki is installed but you don't want to use it
   call s:OtlDefaultGlobalVar("otl_use_viki", 1)
