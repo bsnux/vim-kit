@@ -84,3 +84,12 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+snippet ipdb
+	import ipdb; ipdb.set_trace()
+snippet pdb
+	import pdb; pdb.set_trace()
+snippet with
+	with ${1:expr} as ${2:var}:
+		${3:# code...}
+snippet utf
+	# -*- coding: utf-8 -*-
