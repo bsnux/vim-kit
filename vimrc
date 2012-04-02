@@ -29,9 +29,19 @@ imap { {}<left>
 inoremap ' ''<left>
 inoremap " ""<left>
 
+" Auto reload file if it changes
+set autoread
+
+" Folding
+set foldmethod=indent
+set foldlevel=99
+
 " Django snippets for Python and HTML files
 autocmd FileType python set ft=python.django
 autocmd FileType html set ft=htmldjango.html
+
+" Smart indenting
+set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Loading custom functions
 source ~/.vim/custom/whitespace.vim
