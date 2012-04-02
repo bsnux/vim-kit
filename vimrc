@@ -26,6 +26,8 @@ colorschem darktango
 " Auto closing chars
 imap ( ()<left>
 imap { {}<left>
+inoremap ' ''<left>
+inoremap " ""<left>
 
 " Django snippets for Python and HTML files
 autocmd FileType python set ft=python.django
