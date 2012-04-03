@@ -52,3 +52,11 @@ Folding
 **:za** => Open/close (toggle) a folded group of lines
 
 **:zc** => Close a folded group of lines
+
+
+Registers
+---------
+
+**:reg** => Show named registerd and its content
+
+**"5p** ==> Paste content in register 5
