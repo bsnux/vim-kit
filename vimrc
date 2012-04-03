@@ -43,6 +43,3 @@ autocmd FileType html set ft=htmldjango.html
 " Smart indenting
 set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-" Loading custom functions
-source ~/.vim/custom/whitespace.vim
-"source ~/.vim/custom/gpg.vim
