@@ -6,7 +6,11 @@ A set of files for Vim productivity.
 Features
 --------
 
+* Line numbers
+* No backup files
 * Automatic and smart indentation
+* Using spaces instead of tabs
+* Colorschemas
 * Syntax highlight
 * Reading/Writing GPG files
 * Outliner
