@@ -65,8 +65,8 @@ Registers
 Bookmarks
 ---------
 
-**m<name>** => Create a bookmark named *<name>*
+**m'\<name\>** => Create a bookmark named *\<name\>*
 
-**'<name>** => Go to *<name>* bookmark
+**'\<name\>** => Go to *<name>* bookmark
 
 **:marks** => Display all bookmarks
