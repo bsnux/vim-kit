@@ -60,3 +60,13 @@ Registers
 **:reg** => Show named registerd and its content
 
 **"5p** ==> Paste content in register 5
+
+
+Bookmarks
+---------
+
+**m<name>** => Create a bookmark named *<name>*
+
+**'<name>** => Go to *<name>* bookmark
+
+**:marks** => Display all bookmarks
