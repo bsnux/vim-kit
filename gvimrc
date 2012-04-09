@@ -2,4 +2,4 @@
 "   bsnux configuration for gvim
 "-------------------------------
 
-set gfn=Consolas 11
+set gfn=Consolas\ 11
