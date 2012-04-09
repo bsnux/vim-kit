@@ -19,9 +19,9 @@ set hidden
 filetype plugin on
 
 " Color
-"colorscheme wombat
+colorscheme wombat
 "colorscheme railscasts
-colorschem darktango
+"colorschem darktango
 
 " Auto closing chars
 imap ( ()<left>
