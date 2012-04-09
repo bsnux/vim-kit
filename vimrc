@@ -7,6 +7,9 @@ set nu
 set nobackup
 syntax on
 
+" No swap files
+set noswapfile
+
 " Indentation
 set tabstop=4
 set shiftwidth=4
