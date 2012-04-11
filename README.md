@@ -3,6 +3,18 @@ Configuration files for Vim
 
 A set of files for Vim productivity.
 
+Usage
+-----
+
+1. Clone this repo.
+
+2. Create *symlinks* in your home folder:
+
+    $ ln -s ~/vim-kit/vimrc ~/.vimrc
+
+    $ ln -s ~/vim-kit/vim ~/.vim
+
+
 Features
 --------
 
