@@ -14,6 +14,8 @@ Usage
 
     $ ln -s ~/vim-kit/vim ~/.vim
 
+3. Ready to start Vim!
+
 
 Features
 --------
