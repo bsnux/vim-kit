@@ -21,17 +21,6 @@ set hidden
 " Activating ftplugins
 filetype plugin on
 
-" Setting colorscheme for terminal (256 colors) or GVim
-set t_Co=256
-if (&t_Co == 256 || &t_Co == 88) && !has('gui_running') &&
-  \ filereadable(expand("$HOME/.vim/plugin/guicolorscheme.vim"))
-  runtime! plugin/guicolorscheme.vim
-  GuiColorScheme wombat
-else
-  colorscheme wombat
-endif
-
-
 " Auto closing chars
 imap ( ()<left>
 imap { {}<left>
