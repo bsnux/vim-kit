@@ -46,3 +46,6 @@ autocmd FileType html set ft=htmldjango.html
 " Smart indenting
 set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
+" Status line
+set statusline=%F\ [lines=%L]\ [%p%%]\ [pos=%03l,%03v]\ [buffer=%n]
+set laststatus=2
