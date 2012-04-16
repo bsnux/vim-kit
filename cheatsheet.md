@@ -70,3 +70,10 @@ Bookmarks
 **'\<name\>** => Go to *<name>* bookmark
 
 **:marks** => Display all bookmarks
+
+Grep
+----
+
+**:vimgrep /pattern/gj \*.py**: Search for *pattern* in all *.py* files and return all matches instead of just one per line and not jump to first match automatically
+
+**:cw**: Open new buffer with all matches
