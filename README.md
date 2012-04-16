@@ -31,4 +31,3 @@ Features
 * Snippets for programming languages
 * Auto closing
 * Folding
-
