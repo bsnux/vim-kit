@@ -1,3 +1,8 @@
+Project page
+============
+
+[vim-kit](http://bsnux.github.com/vim-kit/)
+
 Configuration files for Vim
 ==============================
 
