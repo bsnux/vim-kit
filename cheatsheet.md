@@ -77,3 +77,16 @@ Grep
 **:vimgrep /pattern/gj \*.py**: Search for *pattern* in all *.py* files and return all matches instead of just one per line and not jump to first match automatically
 
 **:cw**: Open new buffer with all matches
+
+Sessions
+---------
+
+**:mksession**: Create a new session using a file called *Session.vim*
+
+**:mksession \<file\>**: Create a new session storing info. in *file*
+
+**$ vim -S \<file\>**: Execute *vim* loading session from *file*
+
+**:source \<file\>**: Loading session from *file* inside Vim
+
+**:mksession !**: Overwrite an existing session

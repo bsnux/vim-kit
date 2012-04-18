@@ -3,6 +3,7 @@
 *.swp
 *~
 Session.vim
+vim/sessions/*
 tags
 TAGS
 vim/.netrwhist
