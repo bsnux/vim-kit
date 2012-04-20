@@ -99,3 +99,5 @@ Selections
 **Shift-v**: Visual line => Selecting lines
 
 **v**: Visual mode => Selecting text using home row
+
+**Ctrl-v** + home_row + Shift-i + your_text + ESC-ESC: Insert *your_text* in a column
