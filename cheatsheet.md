@@ -90,3 +90,12 @@ Sessions
 **:source \<file\>**: Loading session from *file* inside Vim
 
 **:mksession !**: Overwrite an existing session
+
+Selections
+-----------
+
+**Ctrl-v**: Visual block => Selecting columns
+
+**Shift-v**: Visual line => Selecting lines
+
+**v**: Visual mode => Selecting text using home row
