@@ -101,3 +101,12 @@ Selections
 **v**: Visual mode => Selecting text using home row
 
 **Ctrl-v** + **home_row** + **Shift-i** + **your_text** + **ESC-ESC**: Insert *your_text* in a column
+
+Spell checking
+--------------
+
+**set spell spelllang=en_us**: Set English spelling for local buffer
+
+**z=**: Suggestions for changing word
+
+**]s**: Move the cursor to the next misspelled word
