@@ -110,3 +110,10 @@ Spell checking
 **z=**: Suggestions for changing word
 
 **]s**: Move the cursor to the next misspelled word
+
+Saving
+------
+
+
+**:w !sudo tee %**: Save a file as *root* user
+
