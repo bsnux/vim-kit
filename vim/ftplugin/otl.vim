@@ -2,9 +2,9 @@
 " Functions, mappings, and macros that implement an outliner similar to
 " WinWord
 "
-" $Id: otl.vim 107 2006-03-07 16:00:36Z ned $
+" $Id: otl.vim 122 2006-05-19 01:12:32Z ned $
 "
-" Maintainer: Ned Konz <vim@bike-nomad.com>
+" Maintainer: Ned Konz <ned@bike-nomad.com>
 "
 " Uses marks o and p
 "
@@ -54,7 +54,12 @@ call s:OtlDefaultGlobalVar("otl_map_tabs", 0)
 " set g:otl_text_view to 1 if you want to start in text view
 call s:OtlDefaultGlobalVar("otl_text_view", 0)
 
-call s:OtlDefaultGlobalVar("otl_use_viki", 0)
+" set g:otl_initial_foldlevel to set the initial fold level in the outline
+"
+" This can be overridden with a modeline:
+"   vim: foldlevel=3
+"
+call s:OtlDefaultGlobalVar("otl_initial_foldlevel", 9)
 
 if exists('*VikiMinorMode')
   " set g:otl_use_viki to 0 if Viki is installed but you don't want to use it
@@ -72,57 +77,16 @@ if exists('*VikiMinorMode')
   call s:OtlDefaultGlobalVar("otl_viki_anchor_marker", "'#'")
 
   call s:OtlDefaultGlobalVar("otl_viki_comment_string", "'.*\[\[%s]]'")
+else
+  let g:otl_use_viki = 0
 endif
 
 " set g:otl_use_thlnk to 0 if Thlnk is installed but you don't want to use it
 call s:OtlDefaultGlobalVar("otl_use_thlnk", exists('*Thlnk_processUrl'))
 
-
 if g:otl_use_viki
   " prefer Viki to Thlnk
   let g:otl_use_thlnk = 0
-
-" These functions will be called by Viki for the TVO Viki family
-" (see doc/viki.txt)
-
-  " Comment out if not debugging
-  " breakadd func Viki*TVO
-
-  " state is 0, +/-1, +/-2
-  " 0 is disabled (not yet supported)
-  " 1 is VikiMinorMode, -1 is VikiMinorModeMaybe
-  " 2 is, -2 is
-  " otherwise, calls these functions with state:
-  "   VikiSetupBufferTVO
-  "   VikiDefineMarkupTVO
-  "   VikiDefineHighlightingTVO
-  "   VikiMapKeysTVO
-  fun! VikiMinorModeTVO(state)
-"    if exists('b:vikiFamily')
-"      if b:vikiFamily == 'TVO'
-"        return
-"      endif
-"    endif
-    call VikiSetBufferVar('vikiNameTypes', 'g:otl_viki_name_types')
-    let b:vikiNameSuffix='.otl'
-    let b:vikiFamily='TVO'
-    let nCCRMap = maparg("<C-CR>", "n")
-    let iCCRMap = maparg("<C-CR>", "i")
-    if exists('b:vikiEnabled')
-      call VikiDefineMarkup(a:state)
-    else
-      call VikiMinorMode(-1)
-    endif
-    " Restore Viki overrides
-    if nCCRMap != ''
-      execute "nnoremap <buffer><silent><script> <C-CR> " nCCRMap
-    endif
-    if iCCRMap != ''
-      execute "inoremap <buffer><silent><script> <C-CR> " iCCRMap
-    endif
-    " use Viki map for ,<c-cr>
-    nnoremap <buffer> <silent> <LocalLeader><c-cr> :call VikiMaybeFollowLink(0,1,)<cr>
-  endfun
 
   "" Called by VikiMinorModeTVO()
   "
@@ -173,47 +137,10 @@ if g:otl_use_viki
   fun! VikiSetupBufferTVO(state, ...)
     let dontSetup = a:0 > 0 ? a:1 : ""
     call VikiSetupBuffer(a:state, dontSetup)
-  endfun
-
-  fun! VikiDefineMarkupTVO(state)
     call VikiDefineMarkup(a:state)
-    let b:vikiAnchorRx = '\[\[\s*%{ANCHOR}\s*]]'
+    let b:vikiAnchorRx = '[[\s\*%{ANCHOR}\s\*]]'
     call VikiSetBufferVar('vikiAnchorMarker', 'g:otl_viki_anchor_marker')
     let b:vikiCommentStart = '\t*'
-  endfun
-
-  fun! VikiDefineHighlightingTVO(state, ...)
-    let dontSetup = a:0 > 0 ? a:1 : ""
-    call VikiDefineHighlighting(a:state)
-  endfun
-
-  fun! VikiMapKeysTVO(state)
-    return VikiMapKeys(a:state)
-  endfun
-
-  "" Other functions
-  " defs are name/dest/anchor/part joined by g:vikiDefSep
-  " see multvals.vim for utils to deal with these.
-
-  fun! VikiCompleteSimpleNameDefTVO(def)
-    return VikiCompleteSimpleNameDef(a:def)
-  endfun
-
-  fun! VikiCompleteExtendedNameDefTVO(def)
-    return VikiCompleteExtendedNameDef(a:def)
-  endfun
-
-  fun! VikiCompleteCmdDefTVO(def)
-    return VikiCompleteCmdDef(a:def)
-  endfun
-
-  fun! VikiFindAnchorTVO(anchor)
-    return VikiFindAnchor(a:anchor)
-  endfun
-
-  " flag is "" for FindNext, "b" for FindPrev
-  fun! VikiFindTVO(flag)
-    return VikiFind(a:flag)
   endfun
 
 endif
@@ -392,7 +319,9 @@ if !exists("s:otl_loaded_functions")
   function s:OtlDoubleClick()
     execute s:OtlBracketTagAndModeAtCursor()
     if tag == ""
-      normal! za
+      if foldlevel(".") > 0
+        normal! za
+      endif
     else
       call s:OtlTagJump()
     endif
@@ -1005,12 +934,12 @@ if !exists("s:otl_loaded_functions")
     " setlocal iskeyword=\ -~,^\|,^[,^*
 
     " Set up file defaults (can be overridden by modelines)
-    setlocal ai
-    setlocal noexpandtab
-    setlocal softtabstop=0
-    setlocal foldcolumn=1
-    setlocal tabstop=4
-    setlocal shiftwidth=4
+"    setlocal ai
+"    setlocal foldcolumn=1
+"    setlocal softtabstop=0
+"    setlocal tabstop=4
+"    setlocal shiftwidth=4
+"    setlocal noexpandtab
 
     let b:undo_ftplugin = "setlocal foldtext< foldmethod< foldexpr< formatoptions< comments< ai< et< foldcolumn< ts< sw<"
       \ . "| unlet! b:vikiFamily b:vikiNameSuffix b:vikiNameTypes b:vikiEnabled b:vikiCommentStart"
@@ -1042,11 +971,13 @@ if !exists("s:otl_loaded_functions")
     " Now set up the minor mode (will be short-circuited after initially
     " setup)
     if g:otl_use_viki
-      call VikiMinorModeTVO(1)
+      call VikiSetBufferVar('vikiNameTypes', 'g:otl_viki_name_types')
+      let b:vikiNameSuffix='.otl'
+      let b:vikiFamily='TVO'
+      let b:vikiMapFunctionalityMinor = substitute(g:vikiMapFunctionalityMinor, '\Cc', '', 'g')
+      VikiMinorMode
     endif
 
-    " and expand all the folds.
-    normal zR
   endfunction
 
   function s:OtlExitBuffer()
@@ -1058,14 +989,24 @@ if !exists("s:otl_loaded_functions")
 
   augroup tvo
     au!
-    au BufEnter *.otl silent call <SID>OtlEnterBuffer()
-    au BufLeave *.otl silent call <SID>OtlExitBuffer()
+    au BufEnter       *.otl silent call <SID>OtlEnterBuffer()
+    au BufLeave       *.otl silent call <SID>OtlExitBuffer()
+    " before processing modelines...
+    au BufNew,BufRead *.otl silent let &l:foldlevel=g:otl_initial_foldlevel
+    " set up overrideable local settings
+    au BufNew,BufRead *.otl silent setlocal ts=4 sw=4 noet ai foldcolumn=1 sts=0
+    " after processing modelines
+"   au BufWinEnter *.otl
 
     " <afile>  name of the file
     " <amatch> is new version of 'filetype'
     au FileType * if (expand("<amatch>") == 'otl')|silent call <SID>OtlEnterBuffer()|endif
   augroup END
 
+  " Now do the things that we would ordinarily do on BufNew, BufRead, or
+  " FileType autocommands but didn't get a chance to do yet.
+  silent let &l:foldlevel=g:otl_initial_foldlevel
+  silent setlocal ts=4 sw=4 noet ai foldcolumn=1 sts=0
   silent call <SID>OtlEnterBuffer()
 endif
 
@@ -1295,94 +1236,4 @@ endif
 let &cpo = s:cpo_save
 finish
 
-"
-"b:vikiAnchorMarker     #
-"b:vikiAnchorNameRx     [a-z][a-zA-Z_0-9]\+
-"b:vikiCmdAnchorIdx    #2
-"b:vikiCmdCompound      let
-"b:vikiCmdDestIdx      #3
-"b:vikiCmdNameIdx      #1
-"b:vikiCmdRx           \v({\S+|#[A-Z]\w*)(.{-}):\s*(.{-})($|}) 
-"b:vikiCmdSimpleRx     \v({\S+|#[A-Z]\w*).{-}($|}) 
-"b:vikiCommentEnd       */
-"b:vikiCommentStart     /*
-"b:vikiEnabled         #1
-"b:vikiExtendedNameAnchorIdx #4
-"b:vikiExtendedNameCompound  let
-"b:vikiExtendedNameDestIdx #1
-"b:vikiExtendedNameNameIdx #6
-"b:vikiExtendedNameRx       \v\[\[((https?|ftps?|nntp|mailto|mailbox)://[^]]+|[^]#]+)?(#([a-z][a-zA-Z_0-9]+))?\](\[([^]]+)\])?[!~\-]*\]
-"b:vikiExtendedNameSimpleRx \v\[\[(https?|ftps?|nntp|mailto|mailbox://[^]]+|[^]#]+)?(#[a-z][a-zA-Z_0-9]+)?\](\[[^]]+\])?[!~\-]*\] 
-"b:vikiFamily           TVO
-"b:vikiInexistentHighlight  vikiInexistentLink
-"b:vikiMarkInexistent  #1
-"b:vikiNameSuffix b:vikiNameTypes b:vikiCommentStart b:vikiCommentEnd
-"b:vikiNameSuffix       .otl
-"b:vikiNameTypes        csSeuix
-"b:vikiQuotedRef        ^\[-.\+-\]$
-"b:vikiQuotedSelfRef    ^\[--\]$
-"b:vikiSimpleNameAnchorIdx #6
-"b:vikiSimpleNameCompound  let
-"b:vikiSimpleNameDestIdx #0
-"b:vikiSimpleNameNameIdx #1
-"b:vikiSimpleNameQuoteBeg  \[-
-"b:vikiSimpleNameQuoteChars  ^][:*/&?<>|\"
-"b:vikiSimpleNameQuoteEnd  -\]
-"b:vikiSimpleNameRx       \v\C((\<[A-Z]+::)?(\[-[^][:*/&?<>|\"]{-}-\]|\<[A-Z][a-z]+([A-Z][a-z0-9]+)+\>))(#([a-z][a-zA-Z_0-9]+)\>)?	
-"b:vikiSimpleNameSimpleRx \v\C(\<[A-Z]+::)?(\[-[^][:*/&?<>|\"]{-}-\]|\<[A-Z][a-z]+([A-Z][a-z0-9]+)+\>)(#[a-z][a-zA-Z_0-9]+\>)?
-"b:vikiSpecialProtocolsExceptions  
-"b:vikiSpecialProtocols  https\?\|ftps\?\|nntp\|mailto\|mailbox
-"b:vikiSplit b:otl_installed_mappings| mapclear <buffer>
-"b:vikiTextstylesVer   #2
-"b:vikiUrlAnchorIdx    #4
-"b:vikiUrlCompound      let
-"b:vikiUrlDestIdx      #1
-"b:vikiUrlNameIdx      #0
-"b:vikiUrlRx        \v\<((https?|ftps?|nntp|mailto|mailbox):[A-Za-z0-9.:%?=&_~@$/|-]+)(#([A-Za-z0-9]+)\>)?
-"b:vikiUrlSimpleRx  \v\<(https?|ftps?|nntp|mailto|mailbox):[A-Za-z0-9.:%?=&_~@$/|-]+(#[A-Za-z0-9]+\>)?
-"loaded_viki           #105
-"no_otl_insert_maps    #0
-"no_otl_maps           #0
-"otl_bold_headers      #0
-"otl_install_menu      #1
-"otl_install_toolbar   #1
-"otl_map_tabs          #0
-"otl_text_view         #0
-"otl_use_thlnk         #0
-"otl_use_viki          #1
-"tlist_viki_settings    deplate;s:structure
-"vikiAnchorMarker       #
-"vikiDefNil             
-"vikiDefSep             ^@
-"vikiDirSeparator       /
-"vikiExplorer           Sexplore
-"vikiFamily             
-"vikiFreeMarker        #0
-"vikiHyperLinkColor     DarkBlue
-"vikiInexistentColor    DarkRed
-"vikiLowerCharacters    a-z
-"vikiMapFunctionality   fcqb
-"vikiMapInexistent     #1
-"vikiMapKeys            ).,;:!?"'
-"vikiMapMouse          #1
-"vikiMarkInexistent    #1
-"vikiNameSuffix         
-"vikiNameTypes          csSeuix
-"vikiOpenFileWith_ANY   silent !kfmclient exec %{FILE}
-"vikiOpenFileWith_html  silent !firefox %{FILE}
-"vikiOpenUrlWith_ANY    silent !kfmclient exec %{URL}
-"vikiOpenUrlWith_file   call VikiOpenFileUrl('%{URL}')
-"vikiOpenUrlWith_http   silent !firefox %{URL}
-"vikiOpenUrlWith_mailbox  call VikiOpenMailbox('%{URL}')
-"vikiOpenUrlWith_mailto  silent !kmail -composer %{URL}
-"vikiSaveHistory       #0
-"vikiSelfRef            .
-"vikiSpecialFilesExceptions  
-"vikiSpecialFiles       jpg\|gif\|bmp\|eps\|png\|jpeg\|wmf\|pdf\|ps\|dvi
-"vikiSpecialProtocolsExceptions  
-"vikiSpecialProtocols   https\?\|ftps\?\|nntp\|mailto\|mailbox
-"vikiTextstylesVer     #2
-"vikiUpperCharacters    A-Z
-"vikiUseParentSuffix   #1
-"
 " vim: ts=2 sw=2 et
