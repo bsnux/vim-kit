@@ -114,6 +114,18 @@ Spell checking
 Saving
 ------
 
-
 **:w !sudo tee %**: Save a file as *root* user
 
+Undo
+----
+
+**:earlier 10m**: Go back 10 minutes
+
+**:later 10m**: Go to a later text state as it was 10 minutes ago
+
+*Branches*: If you undo something and make a new change then a new branch is
+created
+
+**g-**: Go to older text state through branches
+
+**g+**: Go to newer text state through branches
