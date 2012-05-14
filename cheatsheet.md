@@ -129,3 +129,10 @@ created
 **g-**: Go to older text state through branches
 
 **g+**: Go to newer text state through branches
+
+Indentation
+------------
+
+**>**: Indent
+
+**<**: Outdent
