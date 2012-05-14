@@ -30,6 +30,10 @@ inoremap " ""<left>
 " Auto reload file if it changes
 set autoread
 
+" Paste and nopaste
+map <F4> :set paste<CR>
+map <F5> :set nopaste<CR>
+
 " Folding
 set foldmethod=indent
 set foldlevel=99
