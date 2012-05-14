@@ -30,6 +30,9 @@ inoremap " ""<left>
 " Auto reload file if it changes
 set autoread
 
+" For 'pathongen' plugin
+call pathogen#infect()
+
 " Paste and nopaste
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
