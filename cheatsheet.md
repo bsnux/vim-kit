@@ -136,3 +136,8 @@ Indentation
 **>**: Indent
 
 **<**: Outdent
+
+Misc
+-----
+
+**:so ~/.vimrc**: Reloading config without restarting
