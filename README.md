@@ -15,15 +15,16 @@ Usage
 
 2. Create *symlinks* in your home folder:
 
-    $ ln -s ~/vim-kit/vimrc ~/.vimrc
+    `$ ln -s ~/vim-kit/vimrc ~/.vimrc`
 
-    $ ln -s ~/vim-kit/vim ~/.vim
+    `$ ln -s ~/vim-kit/vim ~/.vim`
 
 3. Installing plugins through submodules:
 
-    $ git submodule init
+    `$ git submodule init`
 
-    $ git submodule update
+    `$ git submodule update`
+
 
 4. Ready to start Vim!
 
