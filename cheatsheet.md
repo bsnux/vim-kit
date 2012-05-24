@@ -137,7 +137,16 @@ Indentation
 
 **<**: Outdent
 
+Grammar
+-------
+
+* Verbs:
+    * **v**: Visual
+    * **c**: Change
+
 Misc
 -----
 
 **:so ~/.vimrc**: Reloading config without restarting
+
+**U**: Transform selection to uppercase
