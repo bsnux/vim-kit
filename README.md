@@ -43,3 +43,7 @@ Features
 * Auto closing
 * Folding
 
+Cheatsheet and reference
+-------------------------
+
+[Read this!](https://github.com/bsnux/vim-kit/blob/master/cheatsheet.md)
