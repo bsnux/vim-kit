@@ -143,6 +143,26 @@ Grammar
 * Verbs:
     * **v**: Visual
     * **c**: Change
+    * **d**: Delete
+    * **y**: Copy
+
+* Modifiers:
+    * **i**: Inside
+    * **a**: Around
+    * **t**: till finds a character
+    * **f**: find like till except including the char
+    * **/**: search find a string/regex
+
+* Text objects:
+    * **w**: Word
+    * **s**: Sentence
+    * **p**: Paragraph
+    * **b**: Block/parantheses
+
+* Examples:
+    * **vap**: Visual around paragraph => Visually select this paragraph
+    * **ctM**: Change fill finds character *M* => Change everything from here to letter *M*
+
 
 Misc
 -----
