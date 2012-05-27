@@ -9,6 +9,14 @@ Movements
 
 **%** => Move cursor to the matching bracket
 
+**{** => Move to start of previous paragraph or code block
+
+**}** => Move to end of next paragraph or code block
+
+**Ctr-f** => Move forward one screenfull
+
+**Ctr-b** => Move backforward one screenfull
+
 
 Editing
 --------
