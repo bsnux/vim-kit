@@ -43,6 +43,15 @@ ctags
 
 **:tags** => Show tag history
 
+Generating *ctags* file for all Python files inside a directory:
+
+    $ find . -name \*.py -print | xargs ctags
+
+Generating *ctags* file for all files inside a directory:
+
+    $ ctags -R .
+
+
 
 Tabs
 ----
