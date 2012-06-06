@@ -37,6 +37,9 @@ call pathogen#infect()
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
 
+" Run PEP8
+let g:pep8_map='<F6>'
+
 " Folding
 set foldmethod=indent
 set foldlevel=99
