@@ -25,8 +25,16 @@ Usage
 
     `$ git submodule update`
 
+4. Some plugins require additional executable files. In order to make sure
+   everything is working, you should install the following executables: pep8,
+   ack. For example:
 
-4. Ready to start Vim!
+    `$ yum install -y python-pep8`
+
+    `$ yum install -y ack`
+
+
+5. Ready to start Vim!
 
 
 Features
