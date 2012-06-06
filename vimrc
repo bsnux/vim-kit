@@ -15,6 +15,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Remapping 'leader' key
+let mapleader=","
+
 " Lusty-explorer requires this
 set hidden
 
@@ -39,6 +42,11 @@ map <F5> :set nopaste<CR>
 
 " Run PEP8
 let g:pep8_map='<F6>'
+
+" Display Task list (TODO, FIXME, XXX) using ,v
+map <leader>v <Plug>TaskList
+" Task list on bottom
+let g:tlWindowPosition=1
 
 " Folding
 set foldmethod=indent
