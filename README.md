@@ -51,8 +51,16 @@ Features
 * Snippets for programming languages
 * Auto closing
 * Folding
+* More!
+
+
+Python development
+-------------------
+
+[Check it out!](https://github.com/bsnux/vim-kit/blob/master/doc/python_dev.md)
+
 
 Cheatsheet and reference
 -------------------------
 
-[Read this!](https://github.com/bsnux/vim-kit/blob/master/cheatsheet.md)
+[Read this!](https://github.com/bsnux/vim-kit/blob/master/doc/cheatsheet.md)
