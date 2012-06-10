@@ -44,7 +44,7 @@ Features
 * No backup files
 * Automatic and smart indentation
 * Using spaces instead of tabs
-* Colorschemas
+* Colorscheme
 * Syntax highlight
 * Reading/Writing GPG files
 * Outliner

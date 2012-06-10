@@ -7,12 +7,14 @@ Python development
 
 * **,v**: Display tasks list
 
-* *F4*: set paste
+* **F4**: set paste
 
-* *F5*: set nopaste
+* **F5**: set nopaste
 
-* *>*: Indent code
+* **>**: Indent code
+
+* **<**: Deindent code
 
 * **Gsdiff**: Execute *git diff*
 
-* **Gcommit*: Execute *git commit*
+* **Gcommit**: Execute *git commit*
