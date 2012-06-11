@@ -18,3 +18,5 @@ Python development
 * **Gsdiff**: Execute *git diff*
 
 * **Gcommit**: Execute *git commit*
+
+* **:Ack**: Execute *ack* (*grep* reinvented)
