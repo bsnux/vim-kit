@@ -23,3 +23,5 @@ Python development
 
 * **Ctrl-x Ctrl-o**: Activate *omni completion* opens a drop down menu dialog
 like traditional IDE's
+
+* *Tlist*: Display source code browser
