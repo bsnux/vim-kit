@@ -51,7 +51,9 @@ Generating *ctags* file for all files inside a directory:
 
     $ ctags -R .
 
+Installing *exuberant-ctags* on Mac OS X:
 
+    $ brew install ctags-exuberant
 
 Tabs
 ----

@@ -20,3 +20,6 @@ Python development
 * **Gcommit**: Execute *git commit*
 
 * **:Ack**: Execute *ack* (*grep* reinvented)
+
+* **Ctrl-x Ctrl-o**: Activate *omni completion* opens a drop down menu dialog
+like traditional IDE's
