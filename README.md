@@ -27,11 +27,13 @@ Usage
 
 4. Some plugins require additional executable files. In order to make sure
    everything is working, you should install the following executables: pep8,
-   ack. For example:
+   ack, exuberant-ctgas. For example:
 
     `$ yum install -y python-pep8`
 
     `$ yum install -y ack`
+
+    `$ yum install -y ctags-etags`
 
 
 5. Ready to start Vim!
