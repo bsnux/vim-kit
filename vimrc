@@ -40,6 +40,10 @@ call pathogen#infect()
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
 
+" Save file as 'root'
+" Make sure Defaults requiretty is not set in your sudoers file
+command W w !sudo tee %
+
 " Run PEP8
 let g:pep8_map='<F6>'
 
