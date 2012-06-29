@@ -15,6 +15,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" F2 for saving buffer
+imap <F2> <Esc>:w<CR>i
+
 " Remapping 'leader' key
 let mapleader=","
 
