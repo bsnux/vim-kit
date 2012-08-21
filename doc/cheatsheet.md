@@ -182,6 +182,16 @@ Grammar
     * **vap**: Visual around paragraph => Visually select this paragraph
     * **ctM**: Change fill finds character *M* => Change everything from here to letter *M*
 
+Windows
+-------
+
+* **:res +3**: Increase current window height by 3
+
+* **:res -3**: Decrease current window height by 3
+
+* **Ctrl-w <**: Decrease current window width by 1
+
+* **Ctrl-w >**: Increase current window width by 1
 
 Misc
 -----
