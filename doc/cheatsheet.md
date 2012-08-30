@@ -193,6 +193,16 @@ Windows
 
 * **Ctrl-w >**: Increase current window width by 1
 
+Modeline
+--------
+
+You can add some lines at the top of your file for applying some Vim properties. For example,
+if you want to use wrap text with 79 characteres per line, you should add the following lines
+at the top of your text file:
+
+    # vim:tw=79
+    # vim:fo+=t
+
 Misc
 -----
 
