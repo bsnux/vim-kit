@@ -19,3 +19,6 @@
 [submodule "vim/bundle/timetap"]
 	path = vim/bundle/timetap
 	url = git://github.com/rainerborene/vim-timetap.git
+[submodule "vim/bundle/FuzzyFinder"]
+	path = vim/bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
