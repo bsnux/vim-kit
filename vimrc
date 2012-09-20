@@ -43,6 +43,9 @@ call pathogen#infect()
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
 
+" Mapping Ctrl-Space to call to FufFile command (FuzzyFinder)
+map <C-@> :FufFile<CR>
+
 " Save file as 'root'
 " Make sure Defaults requiretty is not set in your sudoers file
 command W w !sudo tee %
