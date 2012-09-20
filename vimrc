@@ -44,6 +44,8 @@ map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
 
 " Mapping Ctrl-Space to call to FufFile command (FuzzyFinder)
+" vim & gvim compatibility
+map <c-Space> :FufFile<CR>
 map <C-@> :FufFile<CR>
 
 " Save file as 'root'
