@@ -39,6 +39,9 @@ set autoread
 " For 'pathongen' plugin
 call pathogen#infect()
 
+" F3 for :tabnew
+map <F3> :tabnew
+
 " Paste and nopaste
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
