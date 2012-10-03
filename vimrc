@@ -17,6 +17,7 @@ set expandtab
 
 " F2 for saving buffer
 imap <F2> <Esc>:w<CR>i
+nmap <F2> :w<CR>
 
 " Remapping 'leader' key
 let mapleader=","
