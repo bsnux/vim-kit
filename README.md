@@ -62,6 +62,11 @@ Python development
 [Check it out!](https://github.com/bsnux/vim-kit/blob/master/doc/python_dev.md)
 
 
+Git integration
+---------------
+
+Using [fugitive](https://github.com/bsnux/vim-kit/blob/master/doc/fugitive.md) plugin.
+
 Cheatsheet and reference
 -------------------------
 
