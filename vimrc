@@ -28,12 +28,6 @@ set hidden
 " Activating ftplugins
 filetype plugin on
 
-" Auto closing chars
-imap ( ()<left>
-imap { {}<left>
-inoremap ' ''<left>
-inoremap " ""<left>
-
 " Auto reload file if it changes
 set autoread
 
