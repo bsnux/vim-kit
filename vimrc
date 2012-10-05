@@ -47,6 +47,9 @@ map <F3> :tabnew
 map <F4> :set paste<CR>
 map <F5> :set nopaste<CR>
 
+" F7 toggling tag list tab for source browsing
+map <F7> :TagbarToggle<CR>
+
 " Mapping Ctrl-Space to call to FufFile command (FuzzyFinder)
 " vim & gvim compatibility
 map <c-Space> :FufFile<CR>
