@@ -45,6 +45,9 @@ map <F5> :set nopaste<CR>
 map <F7> :TagbarToggle<CR>
 let g:tagbar_left = 1
 
+" Calling to 'git status' through 'fugitive' plugin
+map <F8> :Gstatus<CR>
+
 " Mapping Ctrl-Space to call to FufFile command (FuzzyFinder)
 " vim & gvim compatibility
 map <c-Space> :FufFile<CR>
