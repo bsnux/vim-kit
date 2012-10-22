@@ -50,8 +50,8 @@ map <F8> :Gstatus<CR>
 
 " Mapping Ctrl-Space to call to FufFile command (FuzzyFinder)
 " vim & gvim compatibility
-map <c-Space> :FufFile<CR>
-map <C-@> :FufFile<CR>
+map <c-Space> :FufCoverageFile<CR>
+map <C-@> :FufCoverageFile<CR>
 
 " Save file as 'root'
 " Make sure Defaults requiretty is not set in your sudoers file
