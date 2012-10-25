@@ -23,7 +23,7 @@ Usage
 
     `$ git submodule init`
 
-    `$ git submodule update`
+    `$ git submodule update --init --recursive`
 
 4. Some plugins require additional executable files. In order to make sure
    everything is working, you should install the following executables: pep8,
