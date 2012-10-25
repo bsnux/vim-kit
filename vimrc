@@ -38,8 +38,7 @@ call pathogen#infect()
 map <F3> :tabnew
 
 " Paste and nopaste
-map <F4> :set paste<CR>
-map <F5> :set nopaste<CR>
+set pastetoggle=<F4>
 
 " F7 toggling tag list tab for source browsing
 map <F7> :TagbarToggle<CR>
