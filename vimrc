@@ -59,6 +59,9 @@ command W w !sudo tee %
 " Run PEP8
 let g:pep8_map='<F6>'
 
+" Run jslint
+map <F9> :make %<CR> :cw<CR>
+
 " Display Task list (TODO, FIXME, XXX) using ,v
 map <leader>v <Plug>TaskList
 " Task list on bottom
